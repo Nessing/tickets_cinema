@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/test-data-uuids.yml
+  - include:
+      file: db/changelog/changeset/create-tables.yaml
+  - include:
+      file: db/changelog/changeset/insert-values-halls.yaml
+  - include:
+      file: db/changelog/changeset/insert-values-movies.yaml
+  - include:
+      file: db/changelog/changeset/insert-values-schedule.yaml

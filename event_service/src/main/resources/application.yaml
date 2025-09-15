@@ -3,7 +3,7 @@ spring:
     name: event_service
   liquibase:
     enabled: true
-    change-log: db/changelog/changelog-master.xml
+    change-log: db/changelog/changelog-master.yaml
   datasource:
     url: jdbc:h2:mem:event_db
 #    url: jdbc:h2:file:./data/database

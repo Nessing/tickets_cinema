@@ -1,0 +1,19 @@
+databaseChangeLog:
+#   halls
+  - property:
+      name: hall.1.id
+      value: a50fa213-1e7a-4136-935d-0f2096e6652d
+  - property:
+      name: hall.2.id
+      value: 5f96333e-b6da-4288-8ddd-6c0d64ad0b3b
+  - property:
+      name: hall.3.vip.id
+      value: 97416eae-d7c5-43ba-bd7d-1700e5b642db
+
+#   movies
+  - property:
+      name: movie.terminator-2.id
+      value: 40226f88-8c9b-49e0-8ff7-6bffb63c968f
+  - property:
+      name: movie.robocop.id
+      value: 3193ce32-0237-4e22-80dd-33b510a921db

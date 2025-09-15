@@ -1,0 +1,80 @@
+databaseChangeLog:
+  #      halls
+  - changeSet:
+      id: create_table_halls-1
+      author: Vladimir
+      changes:
+        - createTable:
+            tableName: halls
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+#                  defaultValueComputed: gen_random_uuid() # для postgres
+                  defaultValueComputed: "RANDOM_UUID()" # для h2
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: capacity
+                  type: int
+                  constraints:
+                    nullable: false
+
+#       movies
+  - changeSet:
+      id: create_table_movies-1
+      author: Vladimir
+      changes:
+        - createTable:
+            tableName: movies
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+#                  defaultValueComputed: gen_random_uuid()
+                  defaultValueComputed: "RANDOM_UUID()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(70)
+              - column:
+                  name: duration_in_min
+                  type: int
+                  constraints:
+                    nullable: false
+
+  #       schedule
+  - changeSet:
+      id: create_table_schedule-1
+      author: Vladimir
+      changes:
+        - createTable:
+            tableName: schedule
+            columns:
+              - column:
+                  name: movie_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: schedule_movie
+                    references: movies(id)
+                    nullable: false
+              - column:
+                  name: hall_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: schedule_hall
+                    references: halls(id)
+                    nullable: false
+              - column:
+                  name: showtime
+                  type: datetime
+                  constraints:
+                    nullable: true

@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-values-halls-1
+      author: Vladimir
+      changes:
+        - insert:
+            tableName: halls
+            columns:
+              - column:
+                  name: id
+                  value: ${hall.1.id}
+              - column:
+                  name: name
+                  value: Зал 1
+              - column:
+                  name: capacity
+                  valueNumeric: 30
+        - insert:
+            tableName: halls
+            columns:
+              - column:
+                    name: id
+                    value: ${hall.2.id}
+              - column:
+                  name: name
+                  value: Зал 2
+              - column:
+                  name: capacity
+                  valueNumeric: 30
+        - insert:
+            tableName: halls
+            columns:
+              - column:
+                    name: id
+                    value: ${hall.3.vip.id}
+              - column:
+                  name: name
+                  value: Зал 3 vip
+              - column:
+                  name: capacity
+                  valueNumeric: 10

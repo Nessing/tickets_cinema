@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-values-schedule-1
+      author: Vladimir
+      changes:
+        - insert:
+            tableName: schedule
+            columns:
+              - column:
+                  name: movie_id
+                  value: ${movie.terminator-2.id}
+              - column:
+                  name: hall_id
+                  value: ${hall.1.id}
+              - column:
+                  name: showtime
+                  valueDate: 2015-09-15T21:10:00
+        - insert:
+            tableName: schedule
+            columns:
+              - column:
+                  name: movie_id
+                  value: ${movie.robocop.id}
+              - column:
+                  name: hall_id
+                  value: ${hall.2.id}
+              - column:
+                  name: showtime
+                  valueDate: 2015-09-15T22:15:00
