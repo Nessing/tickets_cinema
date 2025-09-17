@@ -1,5 +1,6 @@
 package ru.nessing.event_service;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,7 +14,6 @@ import ru.nessing.event_service.services.MovieService;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -28,6 +28,7 @@ public class MovieServiceTests {
     private MovieService movieService;
 
     @Test
+    @DisplayName("Возврат фильма по ID")
     public void findMovies() {
         Movie movie1 = new Movie();
         movie1.setTitle("Harry Potter");
@@ -47,6 +48,7 @@ public class MovieServiceTests {
     }
 
     @Test
+    @DisplayName("Исключение если фильм не найден")
     public void notFoundMovies() {
         UUID movieId = UUID.randomUUID();
 
