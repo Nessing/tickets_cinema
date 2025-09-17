@@ -1,17 +1,15 @@
 package ru.nessing.event_service.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.nessing.event_service.entities.Movie;
 import ru.nessing.event_service.services.MovieService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/movie")
+@RequestMapping("/api/v1/")
 public class MovieController {
 
     private final MovieService movieService;
@@ -20,13 +18,15 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("get_all")
+    @GetMapping("movies")
     public ResponseEntity<List<Movie>> getAllMovies() {
-        return movieService.getAllMovies();
+        List<Movie> movies = movieService.getAllMovies();
+        return ResponseEntity.ok(movies);
     }
 
-    @GetMapping("/get_message")
-    public ResponseEntity<String> getMessage() {
-        return ResponseEntity.ok("Hello World");
+    @GetMapping("movie/{id}")
+    public ResponseEntity<Movie> getMovieById(@PathVariable UUID id) {
+        Movie movie = movieService.getMovieById(id);
+        return ResponseEntity.ok(movie);
     }
 }
