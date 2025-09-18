@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.nessing.event_service.entities.Movie;
-import ru.nessing.event_service.exceptions.NotFoundMovie;
+import ru.nessing.event_service.exceptions.exceptionsList.NotFoundMovie;
 import ru.nessing.event_service.repositories.MovieRepository;
 import ru.nessing.event_service.services.MovieService;
 

@@ -1,4 +1,4 @@
 package ru.nessing.event_service.entities;
 
-public class Schedule {
+public class Showtime {
 }

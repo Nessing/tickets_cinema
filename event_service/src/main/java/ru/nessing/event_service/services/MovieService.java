@@ -2,7 +2,7 @@ package ru.nessing.event_service.services;
 
 import org.springframework.stereotype.Service;
 import ru.nessing.event_service.entities.Movie;
-import ru.nessing.event_service.exceptions.NotFoundMovie;
+import ru.nessing.event_service.exceptions.exceptionsList.NotFoundMovie;
 import ru.nessing.event_service.repositories.MovieRepository;
 
 import java.util.List;
