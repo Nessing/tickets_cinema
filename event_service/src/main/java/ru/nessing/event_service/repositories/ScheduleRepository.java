@@ -9,6 +9,7 @@ import ru.nessing.event_service.entities.ScheduleDto;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -29,4 +30,12 @@ public interface ScheduleRepository extends JpaRepository<Schedule, UUID> {
                     "WHERE CAST(showtime AS DATE) = :date " +
                     "ORDER BY showtime")
     List<ScheduleDto> findByDate(@PathVariable("date") String date);
+
+    @Query(nativeQuery = true,
+            value = "SELECT movies.title as title, halls.name as hall, showtime " +
+                    "FROM schedules " +
+                    "INNER JOIN movies ON movie_id = movies.id " +
+                    "INNER JOIN halls ON hall_id = halls.id " +
+                    "WHERE schedules.id = :id")
+    Optional<ScheduleDto> findDtoById(@PathVariable("id") UUID id);
 }

@@ -1,15 +1,13 @@
 package ru.nessing.event_service.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.nessing.event_service.entities.Schedule;
 import ru.nessing.event_service.entities.ScheduleDto;
 import ru.nessing.event_service.services.ScheduleService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -31,8 +29,13 @@ public class ScheduleController {
         return ResponseEntity.ok(scheduleService.getAllScheduleDto());
     }
 
-    @GetMapping("scheduleDtoByDate/{date}")
-    public ResponseEntity<List<ScheduleDto>> getSchedulesByDate(@PathVariable String date) {
+    @GetMapping("scheduleDtoByDate")
+    public ResponseEntity<List<ScheduleDto>> getSchedulesByDate(@RequestParam String date) {
         return ResponseEntity.ok(scheduleService.getScheduleDtoByDate(date));
+    }
+
+    @GetMapping("showtime/{id}")
+    public ResponseEntity<ScheduleDto> getSchedulesById(@PathVariable UUID id) {
+        return ResponseEntity.ok(scheduleService.scheduleDtoById(id));
     }
 }

@@ -3,10 +3,13 @@ package ru.nessing.event_service.services;
 import org.springframework.stereotype.Service;
 import ru.nessing.event_service.entities.Schedule;
 import ru.nessing.event_service.entities.ScheduleDto;
+import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
 import ru.nessing.event_service.repositories.ScheduleRepository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ScheduleService {
@@ -27,5 +30,14 @@ public class ScheduleService {
 
     public List<ScheduleDto> getScheduleDtoByDate(String date) {
         return scheduleRepository.findByDate(date);
+    }
+
+    public ScheduleDto scheduleDtoById(UUID id) {
+        Optional<ScheduleDto> schedule = scheduleRepository.findDtoById(id);
+        if (schedule.isPresent()) {
+            return schedule.get();
+        } else {
+            throw new NotFoundSchedule();
+        }
     }
 }
