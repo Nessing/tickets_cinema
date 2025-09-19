@@ -57,8 +57,15 @@ databaseChangeLog:
       author: Vladimir
       changes:
         - createTable:
-            tableName: schedule
+            tableName: schedules
             columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: "RANDOM_UUID()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
               - column:
                   name: movie_id
                   type: uuid
