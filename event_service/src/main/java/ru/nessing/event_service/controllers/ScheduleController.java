@@ -29,12 +29,12 @@ public class ScheduleController {
         return ResponseEntity.ok(scheduleService.getAllScheduleDto());
     }
 
-    @GetMapping("scheduleDtoByDate")
+    @GetMapping("showtimes")
     public ResponseEntity<List<ScheduleDto>> getSchedulesByDate(@RequestParam String date) {
         return ResponseEntity.ok(scheduleService.getScheduleDtoByDate(date));
     }
 
-    @GetMapping("showtime/{id}")
+    @GetMapping("showtimes/{id}")
     public ResponseEntity<ScheduleDto> getSchedulesById(@PathVariable UUID id) {
         return ResponseEntity.ok(scheduleService.scheduleDtoById(id));
     }

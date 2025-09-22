@@ -17,3 +17,12 @@ databaseChangeLog:
   - property:
       name: movie.robocop.id
       value: 3193ce32-0237-4e22-80dd-33b510a921db
+  - property:
+      name: movie.die_hard.id
+      value: f47ac10b-58cc-4372-a567-0e02b2c3d479
+  - property:
+      name: movie.ghostbusters.id
+      value: 6ba7b810-9dad-11d1-80b4-00c04fd430c8
+  - property:
+      name: movie.ghost.id
+      value: 24f1e03c-6e6e-4b6f-87d2-7c087ade0098

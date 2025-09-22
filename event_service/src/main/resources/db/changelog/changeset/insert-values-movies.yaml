@@ -7,3 +7,9 @@ databaseChangeLog:
             sql: INSERT INTO movies (id, title, duration_in_min) VALUES ('${movie.terminator-2.id}', 'Terminator-2', 120)
         - sql:
             sql: INSERT INTO movies (id, title, duration_in_min) VALUES ('${movie.robocop.id}', 'Robocop', 112);
+        - sql:
+            sql: INSERT INTO movies (id, title, duration_in_min) VALUES ('${movie.die_hard.id}', 'Die hard', 142);
+        - sql:
+            sql: INSERT INTO movies (id, title, duration_in_min) VALUES ('${movie.ghostbusters.id}', 'Ghostbusters', 126);
+        - sql:
+            sql: INSERT INTO movies (id, title, duration_in_min) VALUES ('${movie.ghost.id}', 'Ghost', 138);
