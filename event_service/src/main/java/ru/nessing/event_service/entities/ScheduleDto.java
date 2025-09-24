@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -18,6 +18,6 @@ public class ScheduleDto {
     private String hall;
 
     @JsonFormat(pattern = "dd.MM.yy HH:mm")
-    private Date showtime;
+    private LocalDateTime showtime;
 
 }

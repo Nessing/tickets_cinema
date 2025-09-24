@@ -3,7 +3,7 @@ package ru.nessing.event_service.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -24,5 +24,5 @@ public class Schedule {
     private Hall hall;
 
     @Column(name = "showtime")
-    private Date date;
+    private LocalDateTime date;
 }

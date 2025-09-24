@@ -12,8 +12,8 @@ import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
 import ru.nessing.event_service.repositories.ScheduleRepository;
 import ru.nessing.event_service.services.ScheduleService;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,11 +39,11 @@ public class ScheduleServiceTests {
                 .id(UUID.randomUUID())
                 .movie("Test Film")
                 .hall("Test Hall")
-                .showtime(new Date(2025, Calendar.SEPTEMBER, 15, 16, 20))
+                .showtime(LocalDateTime.of(2025, Calendar.SEPTEMBER, 15, 16, 20))
                 .build();
         given(scheduleRepository.findDtoById(scheduleDto.getId())).willReturn(Optional.of(scheduleDto));
 
-        ScheduleDto currentScheduleDto = scheduleService.scheduleDtoById(scheduleDto.getId());
+        ScheduleDto currentScheduleDto = scheduleService.getScheduleDtoById(scheduleDto.getId());
 
         verify(scheduleRepository).findDtoById(currentScheduleDto.getId());
     }
@@ -57,7 +57,7 @@ public class ScheduleServiceTests {
                 .willReturn(Optional.empty());
 
         assertThrows(NotFoundSchedule.class,
-                () -> scheduleService.scheduleDtoById(sessionId));
+                () -> scheduleService.getScheduleDtoById(sessionId));
 
         verify(scheduleRepository, never()).findDtoById(UUID.randomUUID());
     }

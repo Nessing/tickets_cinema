@@ -6,7 +6,6 @@ import ru.nessing.event_service.entities.ScheduleDto;
 import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
 import ru.nessing.event_service.repositories.ScheduleRepository;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -32,7 +31,7 @@ public class ScheduleService {
         return scheduleRepository.findByDate(date);
     }
 
-    public ScheduleDto scheduleDtoById(UUID id) {
+    public ScheduleDto getScheduleDtoById(UUID id) {
         Optional<ScheduleDto> schedule = scheduleRepository.findDtoById(id);
         if (schedule.isPresent()) {
             return schedule.get();

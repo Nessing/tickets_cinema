@@ -36,6 +36,6 @@ public class ScheduleController {
 
     @GetMapping("showtimes/{id}")
     public ResponseEntity<ScheduleDto> getSchedulesById(@PathVariable UUID id) {
-        return ResponseEntity.ok(scheduleService.scheduleDtoById(id));
+        return ResponseEntity.ok(scheduleService.getScheduleDtoById(id));
     }
 }
