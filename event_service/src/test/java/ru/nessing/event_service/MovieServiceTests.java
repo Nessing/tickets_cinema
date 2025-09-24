@@ -15,8 +15,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class MovieServiceTests {
@@ -58,6 +57,6 @@ public class MovieServiceTests {
         assertThrows(NotFoundMovie.class,
                 () -> movieService.getMovieById(movieId));
 
-        verify(movieRepository, never()).findById(UUID.randomUUID());
+        verify(movieRepository, times(1)).findById(movieId);
     }
 }

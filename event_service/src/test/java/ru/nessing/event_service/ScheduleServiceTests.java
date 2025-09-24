@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.nessing.event_service.entities.ScheduleDto;
+import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
 import ru.nessing.event_service.repositories.ScheduleRepository;
 import ru.nessing.event_service.services.ScheduleService;
 
@@ -16,7 +17,9 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -43,5 +46,19 @@ public class ScheduleServiceTests {
         ScheduleDto currentScheduleDto = scheduleService.scheduleDtoById(scheduleDto.getId());
 
         verify(scheduleRepository).findDtoById(currentScheduleDto.getId());
+    }
+
+    @Test
+    @DisplayName("Не найден сеанс")
+    public void notFoundSession() {
+        UUID sessionId = UUID.randomUUID();
+
+        given(scheduleRepository.findDtoById(sessionId))
+                .willReturn(Optional.empty());
+
+        assertThrows(NotFoundSchedule.class,
+                () -> scheduleService.scheduleDtoById(sessionId));
+
+        verify(scheduleRepository, never()).findDtoById(UUID.randomUUID());
     }
 }
