@@ -3,6 +3,7 @@ package ru.nessing.event_service.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nessing.event_service.entities.Schedule;
+import ru.nessing.event_service.entities.ScheduleDataInf;
 import ru.nessing.event_service.entities.ScheduleDto;
 import ru.nessing.event_service.services.ScheduleService;
 
@@ -35,7 +36,7 @@ public class ScheduleController {
     }
 
     @GetMapping("showtimes/{id}")
-    public ResponseEntity<ScheduleDto> getSchedulesById(@PathVariable UUID id) {
+    public ResponseEntity<ScheduleDataInf> getSchedulesById(@PathVariable UUID id) {
         return ResponseEntity.ok(scheduleService.getScheduleDtoById(id));
     }
 }

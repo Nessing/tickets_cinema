@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ru.nessing.event_service.entities.ScheduleDataInf;
 import ru.nessing.event_service.entities.ScheduleDto;
 import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
 import ru.nessing.event_service.repositories.ScheduleRepository;
@@ -41,11 +42,11 @@ public class ScheduleServiceTests {
                 .hall("Test Hall")
                 .showtime(LocalDateTime.of(2025, Calendar.SEPTEMBER, 15, 16, 20))
                 .build();
-        given(scheduleRepository.findDtoById(scheduleDto.getId())).willReturn(Optional.of(scheduleDto));
+        given(scheduleRepository.findScheduleInfoById(scheduleDto.getId())).willReturn(Optional.of(scheduleDto));
 
-        ScheduleDto currentScheduleDto = scheduleService.getScheduleDtoById(scheduleDto.getId());
+        ScheduleDataInf currentScheduleDto = scheduleService.getScheduleDtoById(scheduleDto.getId());
 
-        verify(scheduleRepository).findDtoById(currentScheduleDto.getId());
+        verify(scheduleRepository).findScheduleInfoById(currentScheduleDto.getId());
     }
 
     @Test
@@ -53,12 +54,12 @@ public class ScheduleServiceTests {
     public void notFoundSession() {
         UUID sessionId = UUID.randomUUID();
 
-        given(scheduleRepository.findDtoById(sessionId))
+        given(scheduleRepository.findScheduleInfoById(sessionId))
                 .willReturn(Optional.empty());
 
         assertThrows(NotFoundSchedule.class,
                 () -> scheduleService.getScheduleDtoById(sessionId));
 
-        verify(scheduleRepository, never()).findDtoById(UUID.randomUUID());
+        verify(scheduleRepository, never()).findScheduleInfoById(UUID.randomUUID());
     }
 }
