@@ -13,6 +13,9 @@ databaseChangeLog:
                   name: hall_id
                   value: ${hall.1.id}
               - column:
+                  name: booking_seats
+                  value: 10
+              - column:
                   name: showtime
                   valueDate: 2025-09-15T21:10:00
         - insert:
@@ -24,6 +27,9 @@ databaseChangeLog:
               - column:
                   name: hall_id
                   value: ${hall.2.id}
+              - column:
+                  name: booking_seats
+                  value: 15
               - column:
                   name: showtime
                   valueDate: 2025-09-15T22:15:00

@@ -81,6 +81,10 @@ databaseChangeLog:
                     references: halls(id)
                     nullable: false
               - column:
+                  name: booking_seats
+                  type: integer
+                  defaultValue: 0
+              - column:
                   name: showtime
                   type: datetime
                   constraints:

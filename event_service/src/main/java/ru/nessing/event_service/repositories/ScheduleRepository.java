@@ -32,10 +32,13 @@ public interface ScheduleRepository extends JpaRepository<Schedule, UUID> {
     List<ScheduleDto> findByDate(@PathVariable("date") String date);
 
     @Query(nativeQuery = true,
-            value = "SELECT CAST(schedules.id as VARCHAR) as id, movies.title as movie, halls.name as hall, halls.capacity as capacity, showtime " +
+            value = "SELECT CAST(schedules.id as VARCHAR) as id, movies.title as movie, " +
+                    "halls.name as hall, halls.capacity as capacity, booking_seats, showtime " +
                     "FROM schedules " +
                     "INNER JOIN movies ON movie_id = movies.id " +
                     "INNER JOIN halls ON hall_id = halls.id " +
                     "WHERE schedules.id = :id")
     Optional<ScheduleDataInf> findScheduleInfoById(@PathVariable("id") UUID id);
+
+    Optional<Schedule> findScheduleById(UUID id);
 }

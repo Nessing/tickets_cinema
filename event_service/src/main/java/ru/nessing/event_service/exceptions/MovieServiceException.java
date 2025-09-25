@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.nessing.event_service.exceptions.exceptionsList.NotFoundHall;
 import ru.nessing.event_service.exceptions.exceptionsList.NotFoundMovie;
 import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
+import ru.nessing.event_service.exceptions.exceptionsList.TooMuchSeat;
 
 @RestControllerAdvice
 public class MovieServiceException {
@@ -23,5 +24,10 @@ public class MovieServiceException {
     @ExceptionHandler(NotFoundSchedule.class)
     public ResponseEntity<DetailError> notFoundScheduleException() {
         return ResponseEntity.badRequest().body(DetailError.message("Сеанс не найден"));
+    }
+
+    @ExceptionHandler(TooMuchSeat.class)
+    public ResponseEntity<DetailError> notHasSeatException() {
+        return ResponseEntity.badRequest().body(DetailError.message("Указано много мест для бронирования"));
     }
 }

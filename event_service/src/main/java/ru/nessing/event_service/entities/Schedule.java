@@ -23,6 +23,9 @@ public class Schedule {
     @JoinColumn(name = "hall_id")
     private Hall hall;
 
+    @Column(name = "booking_seats")
+    private Integer bookingSeats;
+
     @Column(name = "showtime")
     private LocalDateTime date;
 }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.nessing.event_service.entities.Schedule;
 import ru.nessing.event_service.entities.ScheduleDataInf;
 import ru.nessing.event_service.entities.ScheduleDto;
+import ru.nessing.event_service.entities.TransferSeats;
 import ru.nessing.event_service.services.ScheduleService;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class ScheduleController {
     @GetMapping("showtimes/{id}")
     public ResponseEntity<ScheduleDataInf> getSchedulesById(@PathVariable UUID id) {
         return ResponseEntity.ok(scheduleService.getScheduleDtoById(id));
+    }
+
+    @PostMapping("add_seats")
+    public ResponseEntity<String> postSeats(@RequestBody TransferSeats transferSeats) {
+        return ResponseEntity.ok(scheduleService.bookingSeatInSession(transferSeats));
     }
 }

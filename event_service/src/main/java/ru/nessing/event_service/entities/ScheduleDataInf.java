@@ -10,6 +10,7 @@ public interface ScheduleDataInf {
     String getMovie();
     String getHall();
     Integer getCapacity();
+    Integer getBookingSeats();
 
     @JsonFormat(pattern = "dd.MM.yy HH:mm")
     LocalDateTime getShowtime();
