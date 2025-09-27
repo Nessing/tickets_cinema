@@ -46,19 +46,14 @@ public class ScheduleService {
 
     @Transactional
     public String bookingSeatInSession(TransferSeats transferSeats) {
-        Optional<ScheduleDataInf> schedule = scheduleRepository.findScheduleInfoById(transferSeats.getSessionId());
-        if (schedule.isPresent()) {
-            int addSeats = schedule.get().getBookingSeats() + transferSeats.getSeatCount();
-            if (addSeats <= schedule.get().getCapacity()) {
-                Optional<Schedule> currentSchedule = scheduleRepository.findScheduleById(transferSeats.getSessionId());
-                currentSchedule.get().setBookingSeats(addSeats);
-                scheduleRepository.save(currentSchedule.get());
-                return "Мест забронировано: " + addSeats + " на сеанс: " + schedule.get().getMovie();
-            } else {
-                throw new TooMuchSeat();
-            }
-        } else {
-            throw new NotFoundSchedule();
+        ScheduleDataInf schedule = scheduleRepository.findScheduleInfoById(transferSeats.getSessionId()).orElseThrow(NotFoundSchedule::new);
+        int addSeats = schedule.getBookingSeats() + transferSeats.getSeatCount();
+        if (addSeats > schedule.getCapacity()) {
+            throw new TooMuchSeat();
         }
+        Optional<Schedule> currentSchedule = scheduleRepository.findScheduleById(transferSeats.getSessionId());
+        currentSchedule.get().setBookingSeats(addSeats);
+        scheduleRepository.save(currentSchedule.get());
+        return "Мест забронировано: " + addSeats + " на сеанс: " + schedule.getMovie();
     }
 }
