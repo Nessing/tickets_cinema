@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nessing.event_service.entities.Schedule;
 import ru.nessing.event_service.entities.ScheduleDataInf;
-import ru.nessing.event_service.entities.ScheduleDto;
+import ru.nessing.event_service.entities.DTOs.ScheduleDto;
 import ru.nessing.event_service.entities.TransferSeats;
 import ru.nessing.event_service.services.ScheduleService;
 

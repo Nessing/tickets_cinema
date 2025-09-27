@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import ru.nessing.event_service.entities.Schedule;
 import ru.nessing.event_service.entities.ScheduleDataInf;
-import ru.nessing.event_service.entities.ScheduleDto;
+import ru.nessing.event_service.entities.DTOs.ScheduleDto;
 import ru.nessing.event_service.entities.TransferSeats;
 import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
 import ru.nessing.event_service.exceptions.exceptionsList.TooMuchSeat;

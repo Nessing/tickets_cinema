@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.nessing.event_service.entities.Schedule;
 import ru.nessing.event_service.entities.ScheduleDataInf;
-import ru.nessing.event_service.entities.ScheduleDto;
+import ru.nessing.event_service.entities.DTOs.ScheduleDto;
 
 import java.util.List;
 import java.util.Optional;

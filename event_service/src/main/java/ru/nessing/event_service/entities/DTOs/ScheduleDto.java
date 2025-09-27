@@ -1,10 +1,11 @@
-package ru.nessing.event_service.entities;
+package ru.nessing.event_service.entities.DTOs;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import ru.nessing.event_service.entities.ScheduleDataInf;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

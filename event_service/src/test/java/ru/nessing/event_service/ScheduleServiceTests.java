@@ -8,7 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.nessing.event_service.entities.ScheduleDataInf;
-import ru.nessing.event_service.entities.ScheduleDto;
+import ru.nessing.event_service.entities.DTOs.ScheduleDto;
 import ru.nessing.event_service.exceptions.exceptionsList.NotFoundSchedule;
 import ru.nessing.event_service.repositories.ScheduleRepository;
 import ru.nessing.event_service.services.ScheduleService;
