@@ -21,7 +21,5 @@ public class ScheduleDto implements ScheduleDataInf {
     private String hall;
     private Integer capacity;
     private Integer bookingSeats;
-
-    @JsonFormat(pattern = "dd.MM.yy HH:mm")
     private LocalDateTime showtime;
 }

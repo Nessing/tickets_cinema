@@ -27,7 +27,7 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-    public List<ScheduleDto> getAllScheduleDto() {
+    public List<ScheduleDataInf> getAllScheduleDto() {
         return scheduleRepository.findSchedules();
     }
 

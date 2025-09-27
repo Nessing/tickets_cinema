@@ -16,11 +16,12 @@ import java.util.UUID;
 public interface ScheduleRepository extends JpaRepository<Schedule, UUID> {
 
     @Query(nativeQuery = true,
-            value = "SELECT movies.title as title, halls.name as hall, showtime " +
+            value = "SELECT CAST(schedules.id as VARCHAR) as id, movies.title as movie, " +
+                    "halls.name as hall, halls.capacity as capacity, booking_seats, showtime " +
                     "FROM schedules " +
                     "INNER JOIN movies ON movie_id = movies.id " +
                     "INNER JOIN halls ON hall_id = halls.id")
-    List<ScheduleDto> findSchedules();
+    List<ScheduleDataInf> findSchedules();
 
     @Query(nativeQuery = true,
             value = "SELECT movies.title as title, halls.name as hall, showtime " +

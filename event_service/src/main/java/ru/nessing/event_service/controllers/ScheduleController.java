@@ -27,7 +27,7 @@ public class ScheduleController {
     }
 
     @GetMapping("schedulesDto")
-    public ResponseEntity<List<ScheduleDto>> getSchedules() {
+    public ResponseEntity<List<ScheduleDataInf>> getSchedules() {
         return ResponseEntity.ok(scheduleService.getAllScheduleDto());
     }
 
