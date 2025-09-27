@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: booking_service
+server:
+  port: 8083
+
+# property
+name:
+  service:
+    url: "http://localhost:8080"
+    version_1: "/api/v1/"
