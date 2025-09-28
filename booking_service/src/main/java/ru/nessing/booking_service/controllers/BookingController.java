@@ -1,12 +1,11 @@
 package ru.nessing.booking_service.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.nessing.booking_service.cloud.BookingProxy;
 import ru.nessing.booking_service.entities.Movie;
 import ru.nessing.booking_service.entities.SessionInfo;
+import ru.nessing.booking_service.entities.TransferSeat;
 
 import java.util.List;
 
@@ -35,5 +34,10 @@ public class BookingController {
     public ResponseEntity<SessionInfo> getSession(@PathVariable String sessionId) {
         SessionInfo sessionInfo = bookingProxy.getSessionInfo(sessionId);
         return ResponseEntity.ok(sessionInfo);
+    }
+
+    @PostMapping("add_seats")
+    public ResponseEntity<String> addSeat(@RequestBody TransferSeat seat) {
+        return ResponseEntity.ok(bookingProxy.postSeats(seat));
     }
 }
