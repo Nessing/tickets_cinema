@@ -2,6 +2,7 @@ package ru.nessing.booking_service.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import ru.nessing.booking_service.cloud.BookingProxy;
 import ru.nessing.booking_service.entities.Movie;
@@ -28,5 +29,11 @@ public class BookingController {
     public ResponseEntity<List<SessionInfo>> getSessions() {
         List<SessionInfo> sessions = bookingProxy.getSessions();
         return ResponseEntity.ok(sessions);
+    }
+
+    @GetMapping("session/{sessionId}")
+    public ResponseEntity<SessionInfo> getSession(@PathVariable String sessionId) {
+        SessionInfo sessionInfo = bookingProxy.getSessionInfo(sessionId);
+        return ResponseEntity.ok(sessionInfo);
     }
 }

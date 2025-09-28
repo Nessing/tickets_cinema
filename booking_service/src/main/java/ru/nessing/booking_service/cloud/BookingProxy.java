@@ -2,6 +2,7 @@ package ru.nessing.booking_service.cloud;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import ru.nessing.booking_service.entities.Movie;
 import ru.nessing.booking_service.entities.SessionInfo;
 
@@ -15,4 +16,7 @@ public interface BookingProxy {
 
     @GetMapping("schedulesDto")
     List<SessionInfo> getSessions();
+
+    @GetMapping("showtimes/{sessionId}")
+    SessionInfo getSessionInfo(@PathVariable String sessionId);
 }
