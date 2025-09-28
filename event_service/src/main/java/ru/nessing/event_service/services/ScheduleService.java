@@ -54,6 +54,6 @@ public class ScheduleService {
         Optional<Schedule> currentSchedule = scheduleRepository.findScheduleById(transferSeats.getSessionId());
         currentSchedule.get().setBookingSeats(addSeats);
         scheduleRepository.save(currentSchedule.get());
-        return "Мест забронировано: " + addSeats + " на сеанс: " + schedule.getMovie();
+        return "Мест забронировано: " + transferSeats.getSeatCount() + " на сеанс: " + schedule.getMovie();
     }
 }
